@@ -1,0 +1,52 @@
+1. What is JavaScript ?
+
+- JavaScript is a single-threaded, weakly typed, interpreted, object-oriented,
+    prototype based, scripting language with first-class functions.
+- Originally called "LiveScript", due to the buzz in the Java community and Java being used in the frontend,
+    people started calling it "JavaScript".    
+- Weakly typed: variables don't belong to a specific type.
+- Interpreted: Like in Java, code is not compiled (no byte code is formed)
+- Prototype based: Classes do not exist.
+- Scripting: Like Linux shell scripting, a .js file is a script file.
+- First-Class functions: Functions can be used as values.
+
+
+2. Primitive types:
+    a) Numbers - all are 2 decimal floating point numbers internally.
+    b) String - Only strings, no characters.
+    c) Boolean - true or false
+    d) Undefined - a variable is declared but is not given a value.
+                    Like when you don't see a field when filling a form. (We miss that field)
+    e) Null - a variable is declared and null value is assigned to it.
+                    Like when we do "NA" to a field when filling a form.
+
+3. Type Coercion
+    - Automatically converting types.
+    - Refer code
+
+4. Objects 
+    - JS doesn't have the concept of class. We can directly make objects.
+    - We can thus add or delete properties from an object at runtime.
+    - More or less, JS objects are like a Map
+    
+5. Dot(.) vs Bracket[] to access object properties.
+    - Typically we use dot to access object properties.
+    - But we can use bracket, when the object property is a number. Because in this case we can't 
+        use dot.
+    - Even array is internally an object and each index is a property, that's why we use 
+        brackets to access JS array elements. AND due to Type Coercion, JS converts numbers[0] to numbers["0"].
+
+
+6. Array 
+    - Internally they are objects with index as properties.
+    - We can dynamically add values to the array.
+    - Length will always be biggest index + 1.
+
+
+7. Functions
+    - Functions can be passed as arguments and can be assigned as values.
+    - They are internally objects.
+    - A literal object can have a property as a function.
+    - Function overloading does not exist, because a function can take any number of args.
+    - We can use "arguments" argument to loop through every passed argument to the function.
+    - "arguments" is internally an object and NOT an array.
