@@ -73,3 +73,6 @@
     JS gave us STRICT mode. 
     When used at the top of the code, it is applied globally.
     Or we can use it inside certain functions.
+
+
+9. For closures check the code.
