@@ -1,0 +1,60 @@
+1. There are three ways of creating objects in JS.
+    a) Literal object
+        - var person = {
+            "name" : "Sanket",
+            "age" : 25
+        };
+
+    b) Function that returns object
+        - function createPerson(name, age) {
+            var person = {};
+            person.name = name;
+            person.age = age;
+            return person;
+        }
+        var person = createPerson("Sanket", 25);
+
+    c) Constructor function.
+        - function Person(name, age) {
+
+            //var this = {} --> JS adds this
+            
+            this.name = name;
+            this.age = age;
+            
+            //return this; --> JS adds this
+        }
+        var person = new Person("Sanket", 25);  //this new keyword is important to create the "this" reference inside the function.
+
+
+2. If you try to call "createPerson" using new keyword, JS will add the "this" keyword BUT you will get your object (not recommended)
+
+3. If you try to call "Person" function without the new keyword, JS will assign the name and age to the object where "this" is currently pointing to.
+
+
+4. There are 4 ways of call functions in JS
+    a)  function foo() {
+            console.log(this);
+            console.log("foo");
+        }
+        foo();  // Here "this" is referring to the "global" object, which in case of a browser is a "window" object.
+
+    
+    b) var obj = {};
+        obj.foo = function () {
+                console.log(this);
+                console.log("foo");
+            }
+
+        obj.foo();  // Here "this" is referring to the current object, which obj is referring to.
+
+    
+    c) function Person(name) {
+            // var this = {};   --> added by JS
+
+            this.name = name;
+
+            // return this;     --> added by JS
+        }
+
+        new Person("Sanket")    // Here "this" is referring to the object created by JS inside the function.
