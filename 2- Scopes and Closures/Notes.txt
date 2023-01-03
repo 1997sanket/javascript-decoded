@@ -1,0 +1,75 @@
+1. In Java, scope of a variable is confined to the block it is defined in.
+    But in JS, scope is NOT block level, it is function level or global level.
+
+2. If a variable is not declared and we read it -> exception
+    But we can write to a undeclared variable. 
+    This is a weird behaviour which can be corrected using "strict" mode.
+
+3. Generally we should avoid global variables and functions in JS.
+    Because when we request a webpage, server returns bunch of html, css and js files.
+    And if we have a variable "foo" in JS file 1 and also in JS file 2, it can lead to 
+    undesired behaviour. That's why we should not write code globally. The global scope
+    is shared accross JS files. 
+    - In order to solve this we can use IIFE (Implicitly invoked function expression). 
+    - Refer code
+
+4. When runtime environment is a web-browser, whatever we define in the global scope,
+    becomes a property of the "window" object. Both variables and function.
+
+5. Remember JS functions are objects internally assigned to the name of the function.
+
+6. JS is both a compiled and intepreted language.
+    When we run JS code, it is first compiled in a fraction of a second and then it is intepreted.
+    This concept is VVVI to learn in-order to understand how JS works internally, why assigning value to
+    undeclared variable creates the variable in global scope and why and how variable hoisting happens.
+
+    For the following code:
+
+    var a = 10;
+        functionn foo (){
+            console.log("foo");
+            function bar () {
+                undeclaredVar = -100;
+                console.log("bar");
+            }
+            bar();
+        }
+    foo();
+
+
+    Compiler steps: (Creates scope chain)
+        a. "var a" is declared in global scope.
+        b. "function foo" is declared in global scope.
+        c. Now inside "foo" scope, function "bar" is declared.
+        d. Now inside "bar" scope, check whether "undeclaredVar" is declared, 
+            if not, check one-level up i.e in "foo" function, if not then check in 
+            global scope, if not there as well, then create the variable in GLOBAL SCOPE.
+
+    Interpreter steps: (Executes code and gets variables and functions from their resepective scopes)
+        a. Check whether "a" is present in global scope, if yes then assign 10.
+        b. Check whether "foo" function is present in global scope, if yes then invoke.
+        c. Invoke console.log()
+        d. Check whether "bar" function is present in "foo" scope, if yes then invoke.
+        e. Check whether "undeclaredVar" is present in "bar" scope, if not check in "foo" scope
+            if not check in global scope, yes it is there, ok assign the value.
+
+    - One caveat for the following type of code:
+        var foo = function () {
+            console.log("foo");
+        }
+        foo();
+
+    For the above code, Compiler will only create variable "foo" in the global scope and not the function.
+
+
+
+7. Hoisting 
+    A variable and a function can be used first and declared later, which we now is possible due to JS compiler and Interpreter.
+    But it is as if, the variables and functions are declared at the top of the function or global scope. That is why it is 
+    called Hoisting.
+
+
+8. In order to avoid all these weird behaviour, like assignment of undeclared variables getting global scope and etc..
+    JS gave us STRICT mode. 
+    When used at the top of the code, it is applied globally.
+    Or we can use it inside certain functions.

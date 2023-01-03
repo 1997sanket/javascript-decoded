@@ -1,6 +1,6 @@
 1. What is JavaScript ?
 
-- JavaScript is a single-threaded, weakly typed, interpreted, object-oriented,
+- JavaScript is a single-threaded, weakly typed, COMPILED and interpreted, object-oriented,
     prototype based, scripting language with first-class functions.
 - Originally called "LiveScript", due to the buzz in the Java community and Java being used in the frontend,
     people started calling it "JavaScript".    
