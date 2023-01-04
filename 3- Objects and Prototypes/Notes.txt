@@ -58,3 +58,13 @@
         }
 
         new Person("Sanket")    // Here "this" is referring to the object created by JS inside the function.
+
+    
+    d) Using "call" method of the function object.
+        function foo() {
+            console.log("foo");
+        }
+
+        foo.call(); // same as "foo();"
+        foo.call({}) // Here "this" is referring to the passed object.
+
