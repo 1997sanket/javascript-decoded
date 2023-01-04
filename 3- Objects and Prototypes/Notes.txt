@@ -68,3 +68,82 @@
         foo.call(); // same as "foo();"
         foo.call({}) // Here "this" is referring to the passed object.
 
+
+
+
+5. Prototype explained (finally !!)
+    - As we know in JS even functions are internally objects.
+    - When JS processes a function it actually creates 2 objects:
+        a) The function object b) The Prototype object
+    - The function object has a property called "prototype" which points the "Prototype" object.
+    - Like wise, the Prototype object has a property called "constructor" which points to the function object.  
+    - When we create an object from the function using "new" keyword, our object gets a property called 
+        "dunder proto" (__proto__).
+    - This property is also pointing to the same Prototype object.
+    - Now what is the advantage of this ?
+        - Well as we know when we create constructor function with function as a property, each and every
+            object will have a separate copy of the function.
+        - What we CAN do is, put that function inside the Prototype object and that way, our objects in a way
+            can inherit it.
+
+            For eg:
+
+            function Employee(name) {
+                this.name = name;
+
+                // Disadvantage - every object will have separate copy.
+                this.playPranks = function () { console.log("Prank played !!"); }
+            }
+
+            Solution:
+            Employee.prototype.playHardPranks = function() { console.log("Hard prank played !!); }
+
+            var emp1 = new Employee("Jim");
+            var emp2 = new Employee("Dwight");
+
+            // available in the object itself.
+            emp1.playPranks();  
+
+            // first checks for the function in the emp2 object, if not found check in its Prototype object.
+            emp2.playHardPranks(); // Fi
+
+
+
+
+6. Object function
+
+    - JS has a global function called "Object".
+    - Hence we can make objects like this: 
+        var obj = new Object();
+    - There is not difference between creating object this way and creating objects like:
+        var simple = {};
+    - Literal objects can be called as syntactic sugars.
+
+
+7. Prototype chaining explained.
+
+    For the following code:
+
+    function Employee(name) {
+        this.name = name;
+    }
+
+    var emp = new Employee("Michael Scott");
+
+
+    // Prototype chain for the above object.
+    
+    1. Employee function object is created.
+    2. Employee prototype object is created.
+    3. emp object is created, whose dunder-proto is pointing to the Employee prototype object.
+    4. Now, HOW WAS Employee prototype object created ? It must also have a Prototype object and respective 
+        function object.
+        - ANswer is YES:
+            Employee prototype objects' dunder-proto point to the "Object prototype object" which belongs 
+            to the global "Object function".
+        - Now who is the parent of Object prototype object ?
+            Well, it's dunder-proto points to null.
+            Hence, this is where the prototype chain ends.
+
+
+
