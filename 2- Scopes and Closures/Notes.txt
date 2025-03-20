@@ -86,7 +86,7 @@
     foo() // Calling a function even before its declared and defines
     
     var foo = function () {
-        console.log("I am hoisted at the top of my scope, which is GLOBAL")
+        console.log("I give runtime error, because I am not declared before using")
     }
         
 
