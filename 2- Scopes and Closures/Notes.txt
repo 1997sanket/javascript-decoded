@@ -75,4 +75,5 @@
     Or we can use it inside certain functions.
 
 
-9. For closures check the code.
+9. In Java, the outside variables used in Closures need to be final or effectively final, i.e we can only READ them. Because the Lambda(Closure) copies the variable "by value", where as in JavaScript copies
+   the variable "by reference". Hence in JS, the variable dont have to be final and can still be changed.
