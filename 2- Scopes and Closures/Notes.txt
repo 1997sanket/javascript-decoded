@@ -68,6 +68,27 @@
     But it is as if, the variables and functions are declared at the top of the function or global scope. That is why it is 
     called Hoisting.
 
+    // 1. Var variable hoisting
+    console.log(name) // I can use name, even though it was declared and initialized below
+    var name = "Sanket"
+
+    // 2. let and const variables are not hoisted
+
+    // 3. Function hoisting
+    foo() // Calling a function even before its declared and defines
+    
+    function foo() {
+        console.log("I am hoisted at the top of my scope, which is GLOBAL")
+    }
+
+    // 4. Function Expressions (JS lambdas) are not hoisted, only the variable foo is hoisted
+        
+    foo() // Calling a function even before its declared and defines
+    
+    var foo = function () {
+        console.log("I am hoisted at the top of my scope, which is GLOBAL")
+    }
+        
 
 8. In order to avoid all these weird behaviour, like assignment of undeclared variables getting global scope and etc..
     JS gave us STRICT mode. 
